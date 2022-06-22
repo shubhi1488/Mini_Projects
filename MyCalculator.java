@@ -1,18 +1,21 @@
 import java.awt.*;
 import java.awt.event.*;
+/*class MyCalculator is inheriting WindowAdapter class which is inherited by another class i.e WindowListener to perform closing of frame action .
+*/
 class MyCalculator  extends WindowAdapter implements ActionListener {
 Frame f;
 MenuBar mb;
 Menu m1,m2,m3;
 TextField t1;
 Button b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16,bclr,bneg,bback;
-double xd;
+double xd;//xd variable is storing the result after performing the calculation.
+  //numbers num1,num2 will take the input from the textfield and check will store which operation should be performed.
 double num1,num2,check;
 Panel p;
-
+//constructor of MyCalculator class.
 MyCalculator(){
 f=new Frame("calculator");
-f.addWindowListener(this);
+f.addWindowListener(this);//we used this bcz this refers to the current object.
 mb=new MenuBar();
 
 
@@ -115,17 +118,19 @@ f.setMenuBar(mb);
 f.setSize(400,400);
 f.setVisible(true);
 }
+  //main method
 public static void main(String ar[]){
 MyCalculator b=new MyCalculator();
 }
+  //method which will be called when any button in the calculator will be pressed.
 public void actionPerformed(ActionEvent e){
 
-String z,zt;
+String z,zt;//will store the value from the TextField and set the new value after performing calculation to the TextField 
 
 if(e.getSource()==b1){
-zt=t1.getText();
-z=zt+"7";
-t1.setText(z);
+zt=t1.getText();//it will take the value from textfield
+z=zt+"7";//it will concatenate the value as it is of string type
+t1.setText(z);//it will set the new value in the textfield
 }
 if(e.getSource()==b2){
 zt=t1.getText();
@@ -193,7 +198,7 @@ if(e.getSource()==bback){  // FOR  BACKSPACE
 
 
 
-                
+//for addition                
 if(e.getSource()==b15){                     
   try{
     num1=Double.parseDouble(t1.getText());
@@ -205,6 +210,7 @@ if(e.getSource()==b15){
   t1.setText(z);
   check=1;
 }
+  //for subtraction
 if(e.getSource()==b12){                    
   try{
     num1=Double.parseDouble(t1.getText());
@@ -216,6 +222,7 @@ if(e.getSource()==b12){
   t1.setText(z);
   check=2;
 }
+  //for multiplication
 if(e.getSource()==b8){                   
   try{
     num1=Double.parseDouble(t1.getText());
@@ -227,7 +234,7 @@ if(e.getSource()==b8){
   t1.setText(z);
   check=3;
 }
-
+//for division
 if(e.getSource()==b4){                   
   try{
     num1=Double.parseDouble(t1.getText());
@@ -239,7 +246,7 @@ if(e.getSource()==b4){
   t1.setText(z);
   check=4;
 }
-                         
+   //for result                      
 if(e.getSource()==b16){          
   try{
     num2=Double.parseDouble(t1.getText());
@@ -259,6 +266,7 @@ if(e.getSource()==b16){
     xd =num1%num2;    
   t1.setText(String.valueOf(xd));
 }
+  //for clearing the space in the textfield
 if(e.getSource()==bclr){
   num1=0;
   num2=0;
@@ -273,6 +281,7 @@ if(e.getSource()==bclr){
 
 
 }
+  //method to close the window without pressing ctrl+c
 public void windowClosing(WindowEvent e){
 f.dispose();
 }
